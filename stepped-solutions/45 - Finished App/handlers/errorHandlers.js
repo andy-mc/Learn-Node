@@ -41,7 +41,8 @@ exports.flashValidationErrors = (err, req, res, next) => {
 /*
   Development Error Hanlder
 
-  In development we show good error messages so if we hit a syntax error or any other previously un-handled error, we can show good info on what happened
+  In development we show good error messages so if we hit a syntax error or any other previously un-handled error, 
+  we can show good info on what happened
 */
 exports.developmentErrors = (err, req, res, next) => {
   err.stack = err.stack || '';
