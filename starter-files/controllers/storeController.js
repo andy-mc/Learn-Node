@@ -1,7 +1,7 @@
 'use strict';
 
 exports.homePage = (req, res) => {
-  res.locals.title = req.name;
+  res.locals.title = 'andyPandy';
 
   res.render('index');
 }
