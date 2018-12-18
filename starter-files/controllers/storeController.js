@@ -6,5 +6,5 @@ exports.homePage = (req, res) => {
 }
 
 exports.addStore = (req, res) => {
-  res.send('It works');
+  res.render('editStore', {title: '🏪 Add Store'});
 }
