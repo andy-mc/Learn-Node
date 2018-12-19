@@ -15,7 +15,8 @@ exports.addStore = (req, res) => {
 exports.createStore = async (req, res) => {
   const store = new Store(req.body)
   await store.save()
-  console.log('Saved Succesfully !!')
+  req.flash('success', `Store ${store.name.replace(/\w/, char => char.toUpperCase())}
+  Saved Successfully !!`)
 
   res.redirect('/')
 }
