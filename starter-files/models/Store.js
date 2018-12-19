@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
-const slug = require('slugs');
+const mongoose = require('mongoose')
+mongoose.Promise = global.Promise
+const slug = require('slugs')
 
 const storeSchema = new mongoose.Schema({
   name: {
@@ -18,11 +18,11 @@ const storeSchema = new mongoose.Schema({
 
 storeSchema.pre('save', function (next) {
   if (!this.isModified('name')) {
-    return next();
+    return next()
   }
-  this.slug = slug(this.name);
-  next();
+  this.slug = slug(this.name)
+  next()
   // TODO make slug more resilient so slugs are unique
 })
 
-module.exports = mongoose.model('Store', storeSchema);
+module.exports = mongoose.model('Store', storeSchema)
