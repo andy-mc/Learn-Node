@@ -1,5 +1,3 @@
-
-
 const mongoose = require('mongoose');
 
 const Store = mongoose.model('Store');
@@ -10,13 +8,18 @@ exports.homePage = (req, res) => {
 };
 
 exports.addStore = (req, res) => {
-  res.render('editStore', { title: '🏪 Add Store' });
+  res.render('editStore', {
+    title: '🏪 Add Store'
+  });
 };
 
 exports.createStore = async (req, res) => {
-  const store = await (new Store(req.body)).save();
-  req.flash('success', `Store ${store.name.replace(/\w/, char => char.toUpperCase())}
-  Saved Successfully !!`);
+  const store = await new Store(req.body).save();
+  req.flash(
+    'success',
+    `Store ${store.name.replace(/\w/, char => char.toUpperCase())}
+  Saved Successfully !!`
+  );
 
   res.redirect(`/store/${store.slug}`);
 };
@@ -26,6 +29,6 @@ exports.getStores = async (req, res) => {
 
   res.render('stores', {
     title: 'Stores',
-    stores,
+    stores
   });
 };

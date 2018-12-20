@@ -1,106 +1,129 @@
-/** *** */ (function (modules) { // webpackBootstrap
-/** *** */ 	// The module cache
-/** *** */ 	const installedModules = {};
+/** *** */ (function(modules) {
+  // webpackBootstrap
+  /** *** */ // The module cache
+  /** *** */ const installedModules = {}; // The require function
   /** *** */
-  /** *** */ 	// The require function
-  /** *** */ 	function __webpack_require__(moduleId) {
+  /** *** */ /** *** */ function __webpack_require__(moduleId) {
     /** *** */
-    /** *** */ 		// Check if module is in cache
-    /** *** */ 		if (installedModules[moduleId])
-    /** *** */ 			{ return installedModules[moduleId].exports; }
+    /** *** */ // Check if module is in cache
+    /** *** */ if (installedModules[moduleId])
+      /** *** */ return installedModules[moduleId].exports; // Create a new module (and put it into the cache)
     /** *** */
-    /** *** */ 		// Create a new module (and put it into the cache)
-    /** *** */ 		const module = installedModules[moduleId] = {
-      /** *** */ 			i: moduleId,
-      /** *** */ 			l: false,
-      /** *** */ 			exports: {},
-      /** *** */ 		};
+    /** *** */ /** *** */ const module = (installedModules[moduleId] = {
+      /** *** */ i: moduleId,
+      /** *** */ l: false,
+      /** *** */ exports: {}
+      /** *** */
+    }); // Execute the module function
     /** *** */
-    /** *** */ 		// Execute the module function
-    /** *** */ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+    /** *** */ /** *** */ modules[moduleId].call(
+      module.exports,
+      module,
+      module.exports,
+      __webpack_require__
+    ); // Flag the module as loaded
     /** *** */
-    /** *** */ 		// Flag the module as loaded
-    /** *** */ 		module.l = true;
+    /** *** */ /** *** */ module.l = true; // Return the exports of the module
     /** *** */
-    /** *** */ 		// Return the exports of the module
-    /** *** */ 		return module.exports;
-    /** *** */ 	}
+    /** *** */ /** *** */ return module.exports;
+    /** *** */
+  } // expose the modules object (__webpack_modules__)
   /** *** */
   /** *** */
-  /** *** */ 	// expose the modules object (__webpack_modules__)
-  /** *** */ 	__webpack_require__.m = modules;
+  /** *** */ /** *** */ __webpack_require__.m = modules; // expose the module cache
   /** *** */
-  /** *** */ 	// expose the module cache
-  /** *** */ 	__webpack_require__.c = installedModules;
+  /** *** */ /** *** */ __webpack_require__.c = installedModules; // identity function for calling harmony imports with the correct context
   /** *** */
-  /** *** */ 	// identity function for calling harmony imports with the correct context
-  /** *** */ 	__webpack_require__.i = function (value) { return value; };
+  /** *** */ /** *** */ __webpack_require__.i = function(value) {
+    return value;
+  }; // define getter function for harmony exports
   /** *** */
-  /** *** */ 	// define getter function for harmony exports
-  /** *** */ 	__webpack_require__.d = function (exports, name, getter) {
-    /** *** */ 		if (!__webpack_require__.o(exports, name)) {
-      /** *** */ 			Object.defineProperty(exports, name, {
-        /** *** */ 				configurable: false,
-        /** *** */ 				enumerable: true,
-        /** *** */ 				get: getter,
-        /** *** */ 			});
-      /** *** */ 		}
-    /** *** */ 	};
+  /** *** */ /** *** */ __webpack_require__.d = function(
+    exports,
+    name,
+    getter
+  ) {
+    /** *** */ if (!__webpack_require__.o(exports, name)) {
+      /** *** */ Object.defineProperty(exports, name, {
+        /** *** */ configurable: false,
+        /** *** */ enumerable: true,
+        /** *** */ get: getter
+        /** *** */
+      });
+      /** *** */
+    }
+    /** *** */
+  }; // getDefaultExport function for compatibility with non-harmony modules
   /** *** */
-  /** *** */ 	// getDefaultExport function for compatibility with non-harmony modules
-  /** *** */ 	__webpack_require__.n = function (module) {
-    /** *** */ 		const getter = module && module.__esModule
-    /** *** */ 			? function getDefault() { return module.default; }
-    /** *** */ 			: function getModuleExports() { return module; };
-    /** *** */ 		__webpack_require__.d(getter, 'a', getter);
-    /** *** */ 		return getter;
-    /** *** */ 	};
+  /** *** */ /** *** */ __webpack_require__.n = function(module) {
+    /** *** */ const getter =
+      module && module.__esModule
+        ? /** *** */ function getDefault() {
+            return module.default;
+          }
+        : /** *** */ function getModuleExports() {
+            return module;
+          };
+    /** *** */ __webpack_require__.d(getter, 'a', getter);
+    /** *** */ return getter;
+    /** *** */
+  }; // Object.prototype.hasOwnProperty.call
   /** *** */
-  /** *** */ 	// Object.prototype.hasOwnProperty.call
-  /** *** */ 	__webpack_require__.o = function (object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+  /** *** */ /** *** */ __webpack_require__.o = function(object, property) {
+    return Object.prototype.hasOwnProperty.call(object, property);
+  }; // __webpack_public_path__
   /** *** */
-  /** *** */ 	// __webpack_public_path__
-  /** *** */ 	__webpack_require__.p = '';
+  /** *** */ /** *** */ __webpack_require__.p = ''; // Load entry module and return exports
   /** *** */
-  /** *** */ 	// Load entry module and return exports
-  /** *** */ 	return __webpack_require__(__webpack_require__.s = 2);
-/** *** */ }([
-/* 0 */
-/** */ function (module, exports, __webpack_require__) {
-    Object.defineProperty(exports, '__esModule', {
-      value: true,
-    });
-    // based on https://gist.github.com/paulirish/12fb951a8b893a454b32
+  /** *** */ /** *** */ return __webpack_require__((__webpack_require__.s = 2));
+  /** *** */
+})(
+  /** ********************************************************************* */
+  /** *** */ [
+    /* 0 */
+    /** */ function(module, exports, __webpack_require__) {
+      Object.defineProperty(exports, '__esModule', {
+        value: true
+      });
+      // based on https://gist.github.com/paulirish/12fb951a8b893a454b32
 
-    const $ = document.querySelector.bind(document);
-    const $$ = document.querySelectorAll.bind(document);
+      const $ = document.querySelector.bind(document);
+      const $$ = document.querySelectorAll.bind(document);
 
-    Node.prototype.on = window.on = function (name, fn) {
-      this.addEventListener(name, fn);
-    };
+      Node.prototype.on = window.on = function(name, fn) {
+        this.addEventListener(name, fn);
+      };
 
 NodeList.prototype.__proto__ = Array.prototype; // eslint-disable-line
 
-    NodeList.prototype.on = NodeList.prototype.addEventListener = function (name, fn) {
-      this.forEach((elem) => {
-        elem.on(name, fn);
-      });
-    };
+      NodeList.prototype.on = NodeList.prototype.addEventListener = function(
+        name,
+        fn
+      ) {
+        this.forEach(elem => {
+          elem.on(name, fn);
+        });
+      };
 
-    exports.$ = $;
-    exports.$$ = $$;
-    /** */ },
-  /* 1 */
-  /** */ function (module, exports) {
+      exports.$ = $;
+      exports.$$ = $$;
 
-    // removed by extract-text-webpack-plugin
+      /** */
+    },
+    /* 1 */
+    /** */ function(module, exports) {
+      // removed by extract-text-webpack-plugin
+      /** */
+    },
+    /* 2 */
+    /** */ function(module, exports, __webpack_require__) {
+      __webpack_require__(1);
 
-    /** */ },
-  /* 2 */
-  /** */ function (module, exports, __webpack_require__) {
-    __webpack_require__(1);
+      const _bling = __webpack_require__(0);
 
-    const _bling = __webpack_require__(0);
-    /** */ },
-/** *** */ ]));
+      /** */
+    }
+    /** *** */
+  ]
+);
 // # sourceMappingURL=App.bundle.js.map
