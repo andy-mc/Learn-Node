@@ -1,30 +1,31 @@
-'use strict'
 
-const mongoose = require('mongoose')
-const Store = mongoose.model('Store')
+
+const mongoose = require('mongoose');
+
+const Store = mongoose.model('Store');
 
 exports.homePage = (req, res) => {
-  res.locals.title = 'andyPandy'
-  res.render('index')
-}
+  res.locals.title = 'andyPandy';
+  res.render('index');
+};
 
 exports.addStore = (req, res) => {
-  res.render('editStore', { title: '🏪 Add Store' })
-}
+  res.render('editStore', { title: '🏪 Add Store' });
+};
 
 exports.createStore = async (req, res) => {
-  const store = await (new Store(req.body)).save()
+  const store = await (new Store(req.body)).save();
   req.flash('success', `Store ${store.name.replace(/\w/, char => char.toUpperCase())}
-  Saved Successfully !!`)
+  Saved Successfully !!`);
 
-  res.redirect(`/store/${store.slug}`)
-}
+  res.redirect(`/store/${store.slug}`);
+};
 
 exports.getStores = async (req, res) => {
-  const stores = await Store.find()
+  const stores = await Store.find();
 
   res.render('stores', {
     title: 'Stores',
-    stores: stores
-  })
-}
+    stores,
+  });
+};

@@ -1,0 +1,13 @@
+mixin storeCard(store={})
+  .store
+    .store__hero
+      .store__actions
+        button button
+      img(src=`/uploads/${store.photo || 'store.png'}`)
+      h2.title
+        a(href=`/store/${store.slug}`) #{store.name}
+    .store__details
+      if !store.description
+        p= '...'
+      - const endDetail = store.description.length > 100 ? '...' : ''
+      p= store.description.substring(0, 100) + endDetail
