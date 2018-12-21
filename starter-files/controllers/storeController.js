@@ -33,3 +33,31 @@ exports.getStores = async (req, res) => {
     stores
   });
 };
+
+exports.editStore = async (req, res) => {
+  // 1. Find the store given the ID
+  const store = await Store.findById(req.params.id);
+  // 2. confirm the logged user is the owner of the store or data to edit
+  // TODO
+  // 3. Render out the edit form so the user can update their store
+  res.render('editStore', {
+    title: `🏪 Edit Store ${store.name}`,
+    store
+  });
+};
+
+exports.updateStore = async (req, res) => {
+  const store = await Store.findOneAndUpdate({ _id: req.params.id }, req.body, {
+    new: true,
+    runValidators: true
+  }).exec();
+
+  req.flash(
+    'success',
+    `Store ${store.name.replace(/\w/, char =>
+      char.toUpperCase()
+    )} Updated Successfully !!`
+  );
+
+  res.redirect(`/store/${store.slug}`);
+};
