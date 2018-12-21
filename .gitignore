@@ -10,5 +10,3 @@ variables.env.now
 *.bundle.js.map
 starter-files/public/dist/App.bundle.js
 starter-files/public/dist/App.bundle.js.map
-starter-files/public/dist/App.bundle.js
-starter-files/public/dist/App.bundle.js.map
