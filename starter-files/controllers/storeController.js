@@ -47,6 +47,8 @@ exports.editStore = async (req, res) => {
 };
 
 exports.updateStore = async (req, res) => {
+  req.body.tags = req.body.tags || [];
+
   const store = await Store.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true,
     runValidators: true
@@ -54,10 +56,10 @@ exports.updateStore = async (req, res) => {
 
   req.flash(
     'success',
-    `Store ${store.name.replace(/\w/, char =>
+    `Succesfully updated <strong>${store.name.replace(/\w/, char =>
       char.toUpperCase()
-    )} Updated Successfully !!`
+    )}</strong>. <a href="/stores/${store.slug}">View Store →</a>`
   );
 
-  res.redirect(`/store/${store.slug}`);
+  res.redirect(`back`);
 };
