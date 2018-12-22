@@ -23,6 +23,8 @@ const multerOptions = {
     if (isPhoto) {
       return next(null, true);
     }
+    // TODO make this flash error fires with the rest below from
+    // new Store(req.body).save(); errors CHALLENGE
     return next({ multerError: "That type of file isn't allowed !!" }, false);
   }
 };
