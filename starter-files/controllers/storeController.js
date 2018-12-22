@@ -48,9 +48,10 @@ exports.editStore = async (req, res) => {
 
 exports.updateStore = async (req, res) => {
   req.body.tags = req.body.tags || [];
+  req.body.location.type = 'Point';
 
   const store = await Store.findOneAndUpdate({ _id: req.params.id }, req.body, {
-    new: true,
+    new: true, // return the new store
     runValidators: true
   }).exec();
 
