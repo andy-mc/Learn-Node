@@ -2,6 +2,7 @@
     "extends": ["airbnb-base", "plugin:prettier/recommended"],
     "rules": {
         "func-names": ["error", "never"],
-        "no-useless-return": ["off"]
+        "no-useless-return": ["off"],
+        "no-param-reassign": ["off"]
       }
 }

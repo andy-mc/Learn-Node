@@ -23,7 +23,7 @@ const multerOptions = {
     if (isPhoto) {
       return next(null, true);
     }
-    return next({ message: "That type of file isn't allowed !!" }, false);
+    return next({ multerError: "That type of file isn't allowed !!" }, false);
   }
 };
 
