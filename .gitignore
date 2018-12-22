@@ -9,3 +9,5 @@ variables.env.now
 public/dist/
 public/dist/App.bundle.js
 public/dist/App.bundle.js.map
+public/uploads/
+public/uploads

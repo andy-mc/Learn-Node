@@ -1,0 +1,13 @@
+mixin storeCard(store={})
+  .store
+    .store__hero
+      .store__actions
+        .store__action.store__action--edit
+          a(href=`/stores/${store._id}/edit`)
+            != h.icon('pencil')
+      img(src=`/uploads/${store.photo || 'store.png'}`)
+      h2.title
+        a(href=`/store/${store.slug}`) #{store.name}
+    .store__details
+      - const endDetail = store.description.length > 100 ? '...' : ''
+      p= store.description.substring(0, 100) + endDetail

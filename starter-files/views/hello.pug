@@ -1,0 +1,5 @@
+extends layout
+
+block content
+  h1 My name is #{name}
+  h2 And my day ends #{h.moment().endOf('day').fromNow()}
