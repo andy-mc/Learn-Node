@@ -6,7 +6,6 @@ haters/
 variables.env
 variables.env.now
 .vscode
-*.bundle.js
-*.bundle.js.map
-starter-files/public/dist/App.bundle.js
-starter-files/public/dist/App.bundle.js.map
+public/dist/
+public/dist/App.bundle.js
+public/dist/App.bundle.js.map

@@ -77,7 +77,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 function autocomplete(input, latInput, lngInput) {
-  console.log(input, latInput, lngInput);
+  // skip this fn from running if there is not input/address on the page
+  if (!input) return;
+  var dropdown = new google.maps.places.Autocomplete(input);
+
+  dropdown.addListener('place_changed', function () {
+    var place = dropdown.getPlace();
+    latInput.value = place.geometry ? place.geometry.location.lat() : '-0.180653';
+    lngInput.value = place.geometry ? place.geometry.location.lng() : '-78.467834';
+  });
+  //  If someone hits enter on the address field, don't submit
+  //  the form
+  input.on('keydown', function (e) {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+    }
+  });
 }
 
 exports.default = autocomplete;
