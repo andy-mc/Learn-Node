@@ -112,6 +112,7 @@ exports.getStoresByTag = async (req, res) => {
 
   res.render('tag', {
     title: req.params.tag || 'Tags',
+    tag: req.params.tag,
     tags
   });
 };
