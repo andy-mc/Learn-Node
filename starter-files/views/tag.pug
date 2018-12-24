@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  .inner
+    h1= title
+
+    ul.tags
+      each tag in tags
+        li.tag
+          a.tag__link(href=`/tags/${tag._id}`)
+            span.tag__text ##{tag._id}
+            span.tag__count #{tag.count}
