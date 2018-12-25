@@ -52,7 +52,7 @@ exports.flashValidationErrors = (err, req, res, next) => {
   or any other previously un-handled error, we can show good info
   on what happened
 */
-exports.developmentErrors = (err, req, res) => {
+exports.developmentErrors = (err, req, res, next) => {
   err.stack = err.stack || '';
   const errorDetails = {
     message: err.message,
@@ -77,7 +77,7 @@ exports.developmentErrors = (err, req, res) => {
 
   No stacktraces are leaked to user
 */
-exports.productionErrors = (err, req, res) => {
+exports.productionErrors = (err, req, res, next) => {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
