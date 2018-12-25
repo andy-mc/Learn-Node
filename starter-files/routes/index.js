@@ -29,6 +29,7 @@ router.get('/tags', catchErrors(storeController.getStoresByTag));
 router.get('/login', userController.loginForm);
 router.get('/register', userController.registerForm);
 
-router.post('/login', catchErrors(userController.login));
+router.post('/register', userController.validateRegister);
+// router.post('/login', catchErrors(userController.login));
 
 module.exports = router;
