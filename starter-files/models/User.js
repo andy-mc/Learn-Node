@@ -21,11 +21,12 @@ const userSchema = new Schema({
     required: 'Please supply a name',
     trim: true
   }
-  // salt: String,
-  // hash: String,
+  // salt is gen by passportLocalMongoose
+  // hash is gen by passportLocalMongoose
   // hearts: [String]
 });
 
+// passportLocalMongoose make posible User.register
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 userSchema.plugin(mongodbErrorHandler);
 
