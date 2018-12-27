@@ -13,6 +13,8 @@ const morgan = require('morgan');
 const routes = require('./routes/index');
 const helpers = require('./helpers');
 const errorHandlers = require('./handlers/errorHandlers');
+// config passport when app start
+require('./handlers/passport');
 
 // create our Express app
 const app = express();

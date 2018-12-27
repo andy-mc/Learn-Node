@@ -26,7 +26,9 @@ const userSchema = new Schema({
   // hearts: [String]
 });
 
-// passportLocalMongoose make posible User.register
+// passportLocalMongoose make posible:
+// User.register, User.createStrategy(), User.serializeUser()
+// User.deserializeUser()
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 userSchema.plugin(mongodbErrorHandler);
 
