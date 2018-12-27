@@ -63,3 +63,27 @@ exports.account = async (req, res, next) => {
     title: 'Edit Your Account'
   });
 };
+
+exports.updateAccount = async (req, res) => {
+  const updates = {
+    name: req.body.name,
+    email: req.body.email
+  };
+
+  const user = await User.findOneAndUpdate(
+    { _id: req.user._id },
+    { $set: updates },
+    {
+      new: true,
+      runValidators: true,
+      context: 'query'
+    }
+  );
+
+  req.flash(
+    'success',
+    `<strong>${user.name}</strong> Account Succesfully Updated`
+  );
+
+  res.redirect(`back`);
+};

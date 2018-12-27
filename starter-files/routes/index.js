@@ -40,6 +40,16 @@ router.post(
 
 router.get('/logout', authController.logout);
 
-router.get('/account', userController.account);
+router.get(
+  '/account',
+  authController.isLoggedIn,
+  catchErrors(userController.account)
+);
+
+router.post(
+  '/account',
+  authController.isLoggedIn, // this line is neccessary or not ?
+  catchErrors(userController.updateAccount)
+);
 
 module.exports = router;
