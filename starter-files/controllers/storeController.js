@@ -61,7 +61,8 @@ exports.getStores = async (req, res) => {
 
   res.render('stores', {
     title: 'Stores',
-    stores
+    stores,
+    user: req.user
   });
 };
 
