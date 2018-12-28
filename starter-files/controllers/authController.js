@@ -1,6 +1,7 @@
 const passport = require('passport');
 const mongoose = require('mongoose');
 const crypto = require('crypto');
+const promisify = require('es6-promisify');
 
 const User = mongoose.model('User');
 
@@ -60,4 +61,55 @@ exports.forgot = async (req, res, next) => {
 
   // 4. redirect to login page
   res.redirect('/login');
+};
+
+exports.reset = async (req, res) => {
+  const user = await User.findOne({
+    resetPasswordToken: req.params.token,
+    resetPasswordExpires: { $gt: Date.now() }
+  });
+
+  if (!user) {
+    req.flash('error', 'Invalid or expired token, please try again !!');
+    return res.redirect('/login');
+  }
+
+  // if user exists show the reset password form
+  return res.render('reset', {
+    title: 'Reset Password'
+  });
+};
+
+exports.confirmedPasswords = (req, res, next) => {
+  if (req.body.password === req.body['password-confirm']) {
+    return next();
+  }
+  req.flash('error', 'Passwords dont match, try again !!');
+  return res.redirect('back');
+};
+
+exports.update = async (req, res, next) => {
+  const user = await User.findOne({
+    resetPasswordToken: req.params.token,
+    resetPasswordExpires: { $gt: Date.now() }
+  });
+
+  if (!user) {
+    req.flash('error', 'Invalid or expired token, please try again !!');
+    return res.redirect('/login');
+  }
+  const setPassword = promisify(user.setPassword, user);
+  await setPassword(req.body.password);
+
+  user.resetPasswordToken = undefined;
+  user.resetPasswordExpires = undefined;
+  const updatedUser = await user.save();
+  await req.login(updatedUser);
+
+  req.flash(
+    'success',
+    '💃 Nice!! Your password has been reset!! You are now logged in!!'
+  );
+
+  return res.redirect('/');
 };
