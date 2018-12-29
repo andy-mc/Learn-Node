@@ -2,6 +2,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const crypto = require('crypto');
 const promisify = require('es6-promisify');
+const mail = require('../handlers/mail');
 
 const User = mongoose.model('User');
 
@@ -52,11 +53,17 @@ exports.forgot = async (req, res, next) => {
     user.resetPasswordToken
   }`;
 
+  await mail.send({
+    user,
+    subject: 'Password Reset',
+    resetURL,
+    filename: 'password-reset'
+  });
+
   req.flash(
     'success',
     `If you have an account with us, we will sent you an email
-     for resetting your password !!
-     <a href=${resetURL}>${resetURL}</a>`
+     for resetting your password !!`
   );
 
   // 4. redirect to login page
