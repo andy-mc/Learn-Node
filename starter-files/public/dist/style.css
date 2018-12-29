@@ -760,6 +760,8 @@ label {
     fill: white; }
   .store__action--edit a {
     border-bottom: 0; }
+  .store__action--empty {
+    height: 26px; }
 
 .store__hero {
   position: relative;

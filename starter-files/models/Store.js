@@ -19,7 +19,6 @@ const storeSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  photo: String,
   location: {
     type: {
       type: String,
@@ -35,6 +34,12 @@ const storeSchema = new mongoose.Schema({
       type: String,
       required: 'You must supply and address !!'
     }
+  },
+  photo: String,
+  author: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: 'You must supply an author'
   }
 });
 
