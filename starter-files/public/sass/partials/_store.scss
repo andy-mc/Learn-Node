@@ -52,8 +52,10 @@
       border-bottom: 0;
     }
   }
+  &--empty {
+    height: 26px; 
+  }
 }
-
 
 .store__hero {
   position: relative;
