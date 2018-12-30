@@ -21,6 +21,7 @@ function typeAhead(search) {
   searchInput.on('input', function() {
     if (!this.value) {
       searchResults.style.display = 'none';
+      return;
     }
 
     searchResults.style.display = 'block';
@@ -56,22 +57,23 @@ function typeAhead(search) {
     const items = search.querySelectorAll('.search__result');
     let next;
 
-    if (e.keyCode === 40 && current) {
-      next = current.nextElementSibling || items[0];
-    }
     if (e.keyCode === 40 && !current) {
       [next] = items;
     }
-    if (e.keyCode === 38 && current) {
-      next = current.previousElementSibling || items[items.length - 1];
+    if (e.keyCode === 40 && current) {
+      next = current.nextElementSibling || items[0];
     }
     if (e.keyCode === 38 && !current) {
       next = items[items.length - 1];
+    }
+    if (e.keyCode === 38 && current) {
+      next = current.previousElementSibling || items[items.length - 1];
     }
     if (current && e.keyCode === 13 && current.href) {
       window.location = current.href;
       return;
     }
+
     if (current) {
       current.classList.remove(activeClass);
     }
