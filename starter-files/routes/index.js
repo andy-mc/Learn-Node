@@ -60,6 +60,8 @@ router.post(
   catchErrors(authController.update)
 );
 
+router.get('/map', storeController.mapPage);
+
 /*
   API
 */
