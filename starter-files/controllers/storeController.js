@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const Store = mongoose.model('Store');
 const User = mongoose.model('User');
+const Review = mongoose.model('Review');
 const multer = require('multer');
 const jimp = require('jimp');
 const uuid = require('uuid');
