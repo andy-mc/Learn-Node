@@ -1,5 +1,6 @@
 extends layout
 include mixins/_reviewForm
+include mixins/_reviewCard
 
 block content
   .single
@@ -22,3 +23,11 @@ block content
     
     if user
       +reviewForm(store)
+
+    if store.reviews
+      .reviews
+        each review in store.reviews
+          .review
+            +reviewCard(review)
+
+    //- pre= h.dump(store)
