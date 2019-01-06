@@ -85,9 +85,23 @@ storeSchema.statics.getTagsList = function() {
 
 storeSchema.statics.getTopStores = function() {
   return this.aggregate([
-    { $unwind: '$tags' },
-    { $group: { _id: '$tags', count: { $sum: 1 } } },
-    { $sort: { count: -1 } }
+    {
+      $lookup: {
+        from: 'reviews',
+        localField: '_id',
+        foreignField: 'store',
+        as: 'reviews'
+      }
+    },
+    { $match: { 'reviews.1': { $exists: true } } },
+    {
+      $addFields: {
+        averageRating: { $avg: '$reviews.rating' }
+      }
+    },
+
+    { $sort: { averageRating: -1 } },
+    { $limit: 10 }
   ]);
 };
 
